@@ -14,22 +14,31 @@
 
 #Project Structure
 ActiveLog-Health-Tracker/
+
 │── src/
 
-│   ├── main/
+│──├── main/
 
-│   │   ├── java/com/example/activelog/
+│──│──├── java/com/example/activelog/
 
-│   │   │   ├── controllers/
+│──│──│──├── controllers/
 
-│   │   │   ├── models/
+│──│──│──├── models/
 
-│   │   │   ├── repositories/
-│   │   │   ├── services/
-│   │   ├── resources/
-│   │   │   ├── application.properties
-│   ├── test/
+│──│──│──├── repositories/
+
+│──│──│──├── services/
+
+│──│──├── resources/
+
+│──│──│──├── application.properties
+
+│──├── test/
+
 │── pom.xml
+
 │── README.md
+
 │── users.csv
+
 │── .gitignore
