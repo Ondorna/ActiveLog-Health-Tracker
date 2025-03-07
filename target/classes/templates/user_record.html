@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Record</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>User Records for <span th:text="${user.username}"></span></h1>
+
+        <h2>Food Records</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Name</th>
+                    <th>Calories per Serving</th>
+                    <th>Serving Count</th>
+                    <th>Total Calories</th>
+                    <th>Protein</th>
+                    <th>Fat</th>
+                    <th>Carbohydrates</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="foodRecord : ${foodRecords}">
+                    <td th:text="${foodRecord['Timestamp']}"></td>
+                    <td th:text="${foodRecord['Name']}"></td>
+                    <td th:text="${foodRecord['Calories']}"></td>
+                    <td th:text="${foodRecord['Serving Count']}"></td>
+                    <td th:text="${foodRecord['Total Calories']}"></td>
+                    <td th:text="${foodRecord['Protein']}"></td>
+                    <td th:text="${foodRecord['Fat']}"></td>
+                    <td th:text="${foodRecord['Carbs']}"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Exercise Records</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Name</th>
+                    <th>Intensity</th>
+                    <th>Duration (minutes)</th>
+                    <th>Calories Burned Per Minute</th>
+                    <th>Total Calories Burned</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="exerciseRecord : ${exerciseRecords}">
+                    <td th:text="${exerciseRecord['Timestamp']}"></td>
+                    <td th:text="${exerciseRecord['Name']}"></td>
+                    <td th:text="${exerciseRecord['Intensity']}"></td>
+                    <td th:text="${exerciseRecord['Duration']}"></td>
+                    <td th:text="${exerciseRecord['Calories Burned Per Minute']}"></td>
+                    <td th:text="${exerciseRecord['Total Calories Burned']}"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button onclick="location.href='/'">Back to Home</button>
+    </div>
+</body>
+</html>

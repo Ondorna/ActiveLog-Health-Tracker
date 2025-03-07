@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Exercise</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Select Exercise</h1>
+        <form action="/addExerciseRecord" method="post">
+            <div class="input-field">
+                <label for="exercise">Exercise:</label>
+                <select name="exercise" id="exercise" onchange="toggleCustomExercise(this)">
+                    <option th:each="exercise : ${exerciseList}" th:value="${exercise.name}" th:text="${exercise.name}"></option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="input-field" id="custom-exercise-field" style="display: none;">
+                <label for="customExercise">Custom Exercise:</label>
+                <input type="text" id="customExercise" name="customExercise" placeholder="Enter exercise name">
+                <label for="customCalories">Calories Burned Per Minute:</label>
+                <input type="text" id="customCalories" name="customCalories" placeholder="Enter calories per minute">
+            </div>
+            <div class="input-field">
+                <label for="intensity">Intensity:</label>
+                <select name="intensity" id="intensity">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+            <div class="input-field">
+                <label for="duration">Duration (minutes):</label>
+                <input type="number" id="duration" name="duration" step="5" required>
+            </div>
+            <button type="submit" class="button">Add Exercise Record</button>
+        </form>
+        <script>
+            function toggleCustomExercise(select) {
+                const customField = document.getElementById('custom-exercise-field');
+                if (select.value === 'other') {
+                    customField.style.display = 'block';
+                } else {
+                    customField.style.display = 'none';
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>

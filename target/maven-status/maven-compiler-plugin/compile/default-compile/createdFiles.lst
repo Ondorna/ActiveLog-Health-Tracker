@@ -1,0 +1,13 @@
+edu/meu/mgen/data/Food.class
+edu/meu/mgen/data/InsertExerciseData.class
+edu/meu/mgen/notification/Notification.class
+edu/meu/mgen/tracking/Tracker.class
+edu/meu/mgen/data/FoodData.class
+edu/meu/mgen/data/InsertFoodData.class
+edu/meu/mgen/registration/UserRegistration.class
+edu/meu/mgen/tracking/Tracker$NetCaloriesListener.class
+edu/meu/mgen/data/ExerciseData.class
+edu/meu/mgen/user/User.class
+edu/meu/mgen/data/Exercise.class
+edu/meu/mgen/Application.class
+edu/meu/mgen/controller/UserController.class

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Register</h1>
+        <form action="/register" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+
+            <label for="height">Height (cm):</label>
+            <input type="number" id="height" name="height" required>
+
+            <label for="weight">Weight (kg):</label>
+            <input type="number" id="weight" name="weight" required>
+
+            <label for="targetWeight">Target Weight (kg):</label>
+            <input type="number" id="targetWeight" name="targetWeight" required>
+
+            <label for="targetCaloriesBurned">target Calories Burned (kcal):</label>
+            <input type="number" id="targetCaloriesBurned" name="targetCaloriesBurned" required>
+
+            <button type="submit" class="button">Register</button>
+        </form>
+        <p th:if="${error}" th:text="${error}"></p>
+        <p>Already have an account? <a href="/login" class="register-link">Login here</a></p>
+    </div>
+</body>
+</html>

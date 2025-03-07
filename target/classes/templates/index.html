@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to the ActiveLog</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: block;
+            padding: 0;
+            margin: 0;
+            background-color: #f5f5f7;
+        }
+        .header {
+            text-align: center;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 40px;
+        }
+        .header-buttons {
+            display: flex;
+            gap: 15px;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            max-width: 1200px;
+            margin: auto;
+            gap: 40px;
+            padding: 20px;
+            flex-wrap: wrap;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .info, .tracking-info {
+            width: 40%;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #ffffff;
+        }
+        .notifications-sidebar {
+            position: fixed;
+            right: 20px;
+            top: 80px;
+            max-width: 300px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            display: none;
+            z-index: 1000;
+        }
+        button {
+            background-color: #007aff;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .notification-badge {
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 8px 10px;
+            font-size: 14px;  
+            position: absolute;
+            top: -8px; 
+            right: -5px;
+            z-index: 10; 
+        }
+        .header-buttons button {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Welcome to the ActiveLog, <span th:text="${user.username}"></span></h1>
+    </div>
+
+    <div class="header-buttons">
+        <form action="/logout" method="get">
+            <button type="submit">Logout</button>
+        </form>
+        <button onclick="toggleNotifications()" style="position: relative;">
+            Notifications
+            <span id="notification-count" class="notification-badge" th:text="${unreadNotificationsCount}" >${unreadNotificationsCount}</span>
+        </button>
+    </div>
+
+    <div class="container">
+        <!-- User Information Section -->
+        <div class="info">
+            <h2>User Information</h2>
+            <p><strong>Age:</strong> <span th:text="${user.age}"></span></p>
+            <p><strong>Gender:</strong> <span th:text="${user.gender}"></span></p>
+            <p><strong>Height:</strong> <span th:text="${user.height}"></span> cm</p>
+            <p><strong>Weight:</strong> <span th:text="${user.weight}"></span> kg</p>
+            <p><strong>Target Weight:</strong> <span th:text="${user.targetWeight}"></span> kg</p>
+            <p><strong>BMR:</strong> <span th:text="${bmr}"></span> calories/day</p>
+            <button onclick="location.href='/selectFood'">Select Food</button>
+            <button onclick="location.href='/selectExercise'">Select Exercise</button>
+            <button onclick="location.href='/userRecord'">User Record</button>
+        </div>
+
+        <!-- Tracking Information Section -->
+        <div class="tracking-info">
+            <h2>Tracking Summary</h2>
+            <p><strong>Total Calories Intake:</strong> <span th:text="${totalCaloriesIntake}"></span> calories</p>
+            <p><strong>Total Calories Burned:</strong> <span th:text="${totalCaloriesBurned}"></span> calories</p>
+            <p><strong>Net Calories:</strong> <span th:text="${netCalories}"></span> calories</p>
+        </div>
+    </div>
+
+    <!-- Notifications Sidebar -->
+    <div class="notifications-sidebar" id="notifications">
+        <h2>Notifications</h2>
+        <ul>
+            <li th:each="notification : ${notifications}">
+                <span th:utext="${notification}"></span>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        function toggleNotifications() {
+            const notifications = document.getElementById('notifications');
+            if (notifications.style.display === 'none' || notifications.style.display === '') {
+                notifications.style.display = 'block';
+                document.getElementById('notification-count').style.display = 'none';
+            } else {
+                notifications.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
