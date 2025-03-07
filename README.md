@@ -15,10 +15,15 @@
 #Project Structure
 ActiveLog-Health-Tracker/
 │── src/
+
 │   ├── main/
+
 │   │   ├── java/com/example/activelog/
+
 │   │   │   ├── controllers/
+
 │   │   │   ├── models/
+
 │   │   │   ├── repositories/
 │   │   │   ├── services/
 │   │   ├── resources/
